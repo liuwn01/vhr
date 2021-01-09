@@ -2,16 +2,16 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     username: root
-    password: 123
-    url: jdbc:mysql://localhost:3306/vhr?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    password: Test1234
+    url: jdbc:mysql://192.168.1.241:3306/vhr?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
   rabbitmq:
-    username: guest
-    password: guest
-    host: 127.0.0.1
+    username: mq
+    password: mq123
+    host: 192.168.1.241
     publisher-confirms: true
     publisher-returns: true
   redis:
-    host: 127.0.0.1
+    host: 192.168.1.241
     database: 0
     port: 6379
     password: 123
@@ -23,4 +23,4 @@ server:
     enabled: true
 fastdfs:
   nginx:
-    host: http://192.168.91.128/
+    host: http://192.168.1.135/
