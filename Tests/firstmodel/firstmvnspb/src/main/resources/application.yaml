@@ -1,0 +1,17 @@
+my:
+  servers:
+    - dev.example.com
+    - another.example.com
+  redisConfigs:
+    - host: localhost
+      port: 8081
+    - host: 127.0.0.1
+      port: 8082
+hello1:
+  name: hello1_new_name
+  msg: hello1_new_msg
+server:
+  ssl:
+    key-store: classpath:javaboy.p12
+    key-alias: tomcathttps
+    key-store-password: 123456
