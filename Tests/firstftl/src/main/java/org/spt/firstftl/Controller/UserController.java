@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 public class UserController {
-    @GetMapping("/in")
+    @GetMapping("/index")
     public String index(Model model){
         List<User> users = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
