@@ -2,13 +2,14 @@ package org.spt.firstftl.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.spt.firstftl.model.Author;
+import org.spt.firstftl.model.Book;
 import org.spt.firstftl.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -25,4 +26,25 @@ public class UserController {
         model.addAttribute("users",users);
         return "index";
     }
+
+    @GetMapping("/hello")
+    public String hello(Model model){
+        Map<String,Object> map = model.asMap();
+        System.out.println(map);
+        int i = 1/0;
+        return "hello controller advice";
+    }
+
+    //http://localhost:8080/book?a.name=a&a.age=2&b.price=3&b.name=bbb
+    @PostMapping("/book")
+    public String addBook(@ModelAttribute("b") Book book, @ModelAttribute("a") Author author){
+        System.out.println(book);
+        System.out.println(author);
+        return "others";
+    }
+
+    public void test1(Book book){
+
+    }
+
 }
