@@ -11,11 +11,11 @@ import java.util.Date;
 public class MyJob2 extends QuartzJobBean {
     HelloService helloService;
 
-    public HelloService getHs() {
+    public HelloService getHelloService() {
         return helloService;
     }
 
-    public void setHs(HelloService helloService) {
+    public void setHelloService(HelloService helloService) {
         this.helloService = helloService;
     }
 
