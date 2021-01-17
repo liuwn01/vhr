@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spt.firstmybatissinglesource.Mapper.EmployeeecMapper">
+  <resultMap id="BaseResultMap" type="org.spt.firstmybatissinglesource.Entity.Employeeec">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="eid" jdbcType="INTEGER" property="eid" />
+    <result column="ecDate" jdbcType="DATE" property="ecDate" />
+    <result column="ecReason" jdbcType="VARCHAR" property="ecReason" />
+    <result column="ecPoint" jdbcType="INTEGER" property="ecPoint" />
+    <result column="ecType" jdbcType="INTEGER" property="ecType" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employeeec
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spt.firstmybatissinglesource.Entity.Employeeec">
+    insert into employeeec (id, eid, ecDate, 
+      ecReason, ecPoint, ecType, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{ecDate,jdbcType=DATE}, 
+      #{ecReason,jdbcType=VARCHAR}, #{ecPoint,jdbcType=INTEGER}, #{ecType,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.spt.firstmybatissinglesource.Entity.Employeeec">
+    update employeeec
+    set eid = #{eid,jdbcType=INTEGER},
+      ecDate = #{ecDate,jdbcType=DATE},
+      ecReason = #{ecReason,jdbcType=VARCHAR},
+      ecPoint = #{ecPoint,jdbcType=INTEGER},
+      ecType = #{ecType,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, eid, ecDate, ecReason, ecPoint, ecType, remark
+    from employeeec
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, eid, ecDate, ecReason, ecPoint, ecType, remark
+    from employeeec
+  </select>
+</mapper>

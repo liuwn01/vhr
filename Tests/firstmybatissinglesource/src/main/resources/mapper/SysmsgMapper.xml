@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spt.firstmybatissinglesource.Mapper.SysmsgMapper">
+  <resultMap id="BaseResultMap" type="org.spt.firstmybatissinglesource.Entity.Sysmsg">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="hrid" jdbcType="INTEGER" property="hrid" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sysmsg
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spt.firstmybatissinglesource.Entity.Sysmsg">
+    insert into sysmsg (id, mid, `type`, 
+      hrid, `state`)
+    values (#{id,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{hrid,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.spt.firstmybatissinglesource.Entity.Sysmsg">
+    update sysmsg
+    set mid = #{mid,jdbcType=INTEGER},
+      `type` = #{type,jdbcType=INTEGER},
+      hrid = #{hrid,jdbcType=INTEGER},
+      `state` = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, mid, `type`, hrid, `state`
+    from sysmsg
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, mid, `type`, hrid, `state`
+    from sysmsg
+  </select>
+</mapper>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spt.firstmybatissinglesource.Mapper.SalaryMapper">
+  <resultMap id="BaseResultMap" type="org.spt.firstmybatissinglesource.Entity.Salary">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="basicSalary" jdbcType="INTEGER" property="basicSalary" />
+    <result column="bonus" jdbcType="INTEGER" property="bonus" />
+    <result column="lunchSalary" jdbcType="INTEGER" property="lunchSalary" />
+    <result column="trafficSalary" jdbcType="INTEGER" property="trafficSalary" />
+    <result column="allSalary" jdbcType="INTEGER" property="allSalary" />
+    <result column="pensionBase" jdbcType="INTEGER" property="pensionBase" />
+    <result column="pensionPer" jdbcType="REAL" property="pensionPer" />
+    <result column="createDate" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="medicalBase" jdbcType="INTEGER" property="medicalBase" />
+    <result column="medicalPer" jdbcType="REAL" property="medicalPer" />
+    <result column="accumulationFundBase" jdbcType="INTEGER" property="accumulationFundBase" />
+    <result column="accumulationFundPer" jdbcType="REAL" property="accumulationFundPer" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from salary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spt.firstmybatissinglesource.Entity.Salary">
+    insert into salary (id, basicSalary, bonus, 
+      lunchSalary, trafficSalary, allSalary, 
+      pensionBase, pensionPer, createDate, 
+      medicalBase, medicalPer, accumulationFundBase, 
+      accumulationFundPer, `name`)
+    values (#{id,jdbcType=INTEGER}, #{basicSalary,jdbcType=INTEGER}, #{bonus,jdbcType=INTEGER}, 
+      #{lunchSalary,jdbcType=INTEGER}, #{trafficSalary,jdbcType=INTEGER}, #{allSalary,jdbcType=INTEGER}, 
+      #{pensionBase,jdbcType=INTEGER}, #{pensionPer,jdbcType=REAL}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{medicalBase,jdbcType=INTEGER}, #{medicalPer,jdbcType=REAL}, #{accumulationFundBase,jdbcType=INTEGER}, 
+      #{accumulationFundPer,jdbcType=REAL}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.spt.firstmybatissinglesource.Entity.Salary">
+    update salary
+    set basicSalary = #{basicSalary,jdbcType=INTEGER},
+      bonus = #{bonus,jdbcType=INTEGER},
+      lunchSalary = #{lunchSalary,jdbcType=INTEGER},
+      trafficSalary = #{trafficSalary,jdbcType=INTEGER},
+      allSalary = #{allSalary,jdbcType=INTEGER},
+      pensionBase = #{pensionBase,jdbcType=INTEGER},
+      pensionPer = #{pensionPer,jdbcType=REAL},
+      createDate = #{createDate,jdbcType=TIMESTAMP},
+      medicalBase = #{medicalBase,jdbcType=INTEGER},
+      medicalPer = #{medicalPer,jdbcType=REAL},
+      accumulationFundBase = #{accumulationFundBase,jdbcType=INTEGER},
+      accumulationFundPer = #{accumulationFundPer,jdbcType=REAL},
+      `name` = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, basicSalary, bonus, lunchSalary, trafficSalary, allSalary, pensionBase, 
+    pensionPer, createDate, medicalBase, medicalPer, accumulationFundBase, accumulationFundPer, 
+    `name`
+    from salary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, basicSalary, bonus, lunchSalary, trafficSalary, allSalary, pensionBase, 
+    pensionPer, createDate, medicalBase, medicalPer, accumulationFundBase, accumulationFundPer, 
+    `name`
+    from salary
+  </select>
+</mapper>

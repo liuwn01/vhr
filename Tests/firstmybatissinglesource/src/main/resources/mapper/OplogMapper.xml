@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spt.firstmybatissinglesource.Mapper.OplogMapper">
+  <resultMap id="BaseResultMap" type="org.spt.firstmybatissinglesource.Entity.Oplog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="addDate" jdbcType="DATE" property="addDate" />
+    <result column="operate" jdbcType="VARCHAR" property="operate" />
+    <result column="hrid" jdbcType="INTEGER" property="hrid" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from oplog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spt.firstmybatissinglesource.Entity.Oplog">
+    insert into oplog (id, addDate, operate, 
+      hrid)
+    values (#{id,jdbcType=INTEGER}, #{addDate,jdbcType=DATE}, #{operate,jdbcType=VARCHAR}, 
+      #{hrid,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.spt.firstmybatissinglesource.Entity.Oplog">
+    update oplog
+    set addDate = #{addDate,jdbcType=DATE},
+      operate = #{operate,jdbcType=VARCHAR},
+      hrid = #{hrid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, addDate, operate, hrid
+    from oplog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, addDate, operate, hrid
+    from oplog
+  </select>
+</mapper>

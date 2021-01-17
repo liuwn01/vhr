@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spt.firstmybatissinglesource.Mapper.MailSendLogMapper">
+  <resultMap id="BaseResultMap" type="org.spt.firstmybatissinglesource.Entity.MailSendLog">
+    <result column="msgId" jdbcType="VARCHAR" property="msgId" />
+    <result column="empId" jdbcType="INTEGER" property="empId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="routeKey" jdbcType="VARCHAR" property="routeKey" />
+    <result column="exchange" jdbcType="VARCHAR" property="exchange" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="tryTime" jdbcType="TIMESTAMP" property="tryTime" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="org.spt.firstmybatissinglesource.Entity.MailSendLog">
+    insert into mail_send_log (msgId, empId, `status`, 
+      routeKey, exchange, `count`, 
+      tryTime, createTime, updateTime
+      )
+    values (#{msgId,jdbcType=VARCHAR}, #{empId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{routeKey,jdbcType=VARCHAR}, #{exchange,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, 
+      #{tryTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select msgId, empId, `status`, routeKey, exchange, `count`, tryTime, createTime, 
+    updateTime
+    from mail_send_log
+  </select>
+</mapper>
